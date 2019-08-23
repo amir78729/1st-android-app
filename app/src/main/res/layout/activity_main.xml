@@ -191,7 +191,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="cursive"
-        android:text="@string/x_s_turn"
+        android:text="@string/X_turn"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

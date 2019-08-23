@@ -4,5 +4,7 @@
     <string name="X_won">player X won!</string>
     <string name="O_won">player O won!</string>
     <string name="play_again">Play Again!</string>
-    <string name="x_s_turn">X\'s turn...</string>
+    <string name="X_turn">X\'s turn…</string>
+    <string name="O_turn">O\'s turn…</string>
+    <string name="no_winners">no winners!</string>
 </resources>

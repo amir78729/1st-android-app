@@ -1,10 +1,6 @@
 package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,17 +8,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private int moves;
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
     private Button playAgain;
-    private TextView title;
     private TextView status;
 
     private char[] gameField = new char[9];
@@ -37,18 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
         playAgain = findViewById(R.id.playAgain);
 
-        title = findViewById(R.id.title);
         status = findViewById(R.id.status);
 
-        button1 = findViewById(R.id.b1);
-        button2 = findViewById(R.id.b2);
-        button3 = findViewById(R.id.b3);
-        button4 = findViewById(R.id.b4);
-        button5 = findViewById(R.id.b5);
-        button6 = findViewById(R.id.b6);
-        button7 = findViewById(R.id.b7);
-        button8 = findViewById(R.id.b8);
-        button9 = findViewById(R.id.b9);
+        Button button1 = findViewById(R.id.b1);
+        Button button2 = findViewById(R.id.b2);
+        Button button3 = findViewById(R.id.b3);
+        Button button4 = findViewById(R.id.b4);
+        Button button5 = findViewById(R.id.b5);
+        Button button6 = findViewById(R.id.b6);
+        Button button7 = findViewById(R.id.b7);
+        Button button8 = findViewById(R.id.b8);
+        Button button9 = findViewById(R.id.b9);
 
         myButtons[0] = button1;
         myButtons[1] = button2;
@@ -144,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 clearTheGameField();
                 enableAllButtons();
                 playerNumber1Turn = true;
-                status.setText("X's turn...");
+                status.setText(R.string.X_turn);
                 playAgain.setVisibility(View.INVISIBLE);
             }
         });
@@ -157,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
             myButtons[i].setText("❌");
             myButtons[i].setEnabled(false);
             gameField[i] = 'X';
-            status.setText("O's turn...");
+            status.setText(R.string.O_turn);
         }else{
             myButtons[i].setText("⭕");
             myButtons[i].setEnabled(false);
             gameField[i] = 'O';
-            status.setText("X's turn...");
+            status.setText(R.string.X_turn);
         }
         moves++;
         playerNumber1Turn = !playerNumber1Turn;
@@ -188,9 +173,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         if (gameField[3] == gameField[4] && gameField[4] == gameField[5] && gameField[5] != '-')
             return true;
-        if (gameField[1] == gameField[4] && gameField[4] == gameField[7] && gameField[7] != '-')
-            return true;
-        return false;
+        return gameField[1] == gameField[4] && gameField[4] == gameField[7] && gameField[7] != '-';
     }
 
     public void clearTheGameField(){
@@ -216,15 +199,15 @@ public class MainActivity extends AppCompatActivity {
     public void gameOver(){
         disableAllButtons();
         if (!playerNumber1Turn){
-            status.setText("player X won!");
+            status.setText(R.string.X_won);
         }else{
-            status.setText("player O won!");
+            status.setText(R.string.O_won);
         }
         playAgain.setVisibility(View.VISIBLE);
     }
     public void draws(){
         disableAllButtons();
-            status.setText("no winners!");
+            status.setText(R.string.no_winners);
         playAgain.setVisibility(View.VISIBLE);
     }
 }
