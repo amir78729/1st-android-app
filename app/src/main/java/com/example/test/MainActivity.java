@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int moves;
     private Button button1;
     private Button button2;
     private Button button3;
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
                         gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -82,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
                    press(2,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -94,7 +98,9 @@ public class MainActivity extends AppCompatActivity {
                    press(3,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -105,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
                    press(4,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -116,7 +124,9 @@ public class MainActivity extends AppCompatActivity {
                    press(5,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -127,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
                    press(6,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -138,7 +150,9 @@ public class MainActivity extends AppCompatActivity {
                    press(7,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -149,7 +163,9 @@ public class MainActivity extends AppCompatActivity {
                    press(8,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -160,7 +176,9 @@ public class MainActivity extends AppCompatActivity {
                    press(9,playerNumber1Turn);
                    playerNumber1Turn = !playerNumber1Turn;
                    if (isTheGameOver()){
-                       gameOver();
+                        gameOver();
+                   }else if(moves >= 9){
+                       draws();
                    }
                }
            }
@@ -191,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
             gameField[i] = 'O';
             status.setText("X's turn...");
         }
+        moves++;
     }
 
     public boolean isTheGameOver(){
@@ -214,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clearTheGameField(){
+        moves = 0;
         for (int i = 0 ; i < 9 ; i++){
             gameField[i] = '-';
             myButtons[i].setText("-");
@@ -239,6 +259,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             status.setText("player O won!");
         }
+        playAgain.setVisibility(View.VISIBLE);
+    }
+    public void draws(){
+        disableAllButtons();
+            status.setText("no winners!");
         playAgain.setVisibility(View.VISIBLE);
     }
 }
