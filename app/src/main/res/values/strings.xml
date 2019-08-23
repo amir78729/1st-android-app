@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tic-Tac-Tou</string>
+    <string name="no_input_yet">-</string>
+    <string name="X_won">player X won!</string>
+    <string name="O_won">player O won!</string>
+    <string name="play_again">Play Again!</string>
+    <string name="x_s_turn">X\'s turn...</string>
+</resources>
