@@ -68,12 +68,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(1,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -82,12 +77,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(2,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -96,12 +86,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(3,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -109,12 +94,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(4,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -122,12 +102,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(5,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -135,12 +110,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(6,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -148,12 +118,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(7,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -161,12 +126,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(8,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -174,12 +134,7 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    press(9,playerNumber1Turn);
-                   playerNumber1Turn = !playerNumber1Turn;
-                   if (isTheGameOver()){
-                        gameOver();
-                   }else if(moves >= 9){
-                       draws();
-                   }
+
                }
            }
         );
@@ -210,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
             status.setText("X's turn...");
         }
         moves++;
+        playerNumber1Turn = !playerNumber1Turn;
+        if (isTheGameOver()){
+            gameOver();
+        }else if(moves >= 9){
+            draws();
+        }
     }
 
     public boolean isTheGameOver(){
