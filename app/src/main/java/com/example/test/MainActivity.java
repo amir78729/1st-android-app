@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         moves = 0;
         for (int i = 0 ; i < 9 ; i++){
             gameField[i] = '-';
-            myButtons[i].setText("-");
+            myButtons[i].setText(R.string.no_input_yet);
         }
     }
 
