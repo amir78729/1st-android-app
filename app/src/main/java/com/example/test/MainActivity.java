@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private int moves;
@@ -139,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     public void press(int i, boolean IsPlayerNumber1Turn){
         i--;
         if(IsPlayerNumber1Turn){
-            myButtons[i].setText("❌");
+            myButtons[i].setText("✖");
             myButtons[i].setEnabled(false);
             gameField[i] = 'X';
             status.setText(R.string.O_turn);
@@ -151,14 +152,14 @@ public class MainActivity extends AppCompatActivity {
         }
         moves++;
         playerNumber1Turn = !playerNumber1Turn;
-        if (isTheGameOver()){
+        if (hasTheGameAWinner()){
             gameOver();
         }else if(moves >= 9){
             draws();
         }
     }
 
-    public boolean isTheGameOver(){
+    public boolean hasTheGameAWinner(){
         if (gameField[0] == gameField[1] && gameField[1] == gameField[2] && gameField[2] != '-')
             return true;
         if (gameField[0] == gameField[4] && gameField[4] == gameField[8] && gameField[8] != '-')
@@ -200,14 +201,18 @@ public class MainActivity extends AppCompatActivity {
         disableAllButtons();
         if (!playerNumber1Turn){
             status.setText(R.string.X_won);
+            Toast.makeText(getApplicationContext(),R.string.X_won, Toast.LENGTH_LONG).show();
+
         }else{
             status.setText(R.string.O_won);
+            Toast.makeText(getApplicationContext(),R.string.O_won, Toast.LENGTH_LONG).show();
         }
         playAgain.setVisibility(View.VISIBLE);
     }
     public void draws(){
         disableAllButtons();
-            status.setText(R.string.no_winners);
+        status.setText(R.string.no_winners);
+        Toast.makeText(getApplicationContext(),R.string.no_winners, Toast.LENGTH_LONG).show();
         playAgain.setVisibility(View.VISIBLE);
     }
 }
