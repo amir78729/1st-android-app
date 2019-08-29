@@ -2,6 +2,7 @@ package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -150,7 +151,10 @@ public class MainActivity extends AppCompatActivity {
             gameField[i] = 'O';
             status.setText(R.string.X_turn);
         }
+        Log.d("TTT", "button number "+(i+1)+" pressed");
         moves++;
+        Log.d("TTT", "" + moves + "move(s)");
+
         playerNumber1Turn = !playerNumber1Turn;
         if (hasTheGameAWinner()){
             gameOver();
@@ -172,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         if (gameField[2] == gameField[4] && gameField[4] == gameField[6] && gameField[6] != '-')
             return true;
-        if (gameField[3] == gameField[4] && gameField[4] == gameField[5] && gameField[5] != '-')
+        if (gameField[3] == gameField[4] && gameField[4]  == gameField[5] && gameField[5] != '-')
             return true;
         return gameField[1] == gameField[4] && gameField[4] == gameField[7] && gameField[7] != '-';
     }
@@ -183,18 +187,22 @@ public class MainActivity extends AppCompatActivity {
             gameField[i] = '-';
             myButtons[i].setText(R.string.no_input_yet);
         }
+        Log.d("TTT", "clearTheGameField: ");
     }
 
     public void disableAllButtons(){
         for (int i = 0 ; i < 9 ; i++){
             myButtons[i].setEnabled(false);
         }
+        Log.d("TTT", "disableAllButtons: ");
+
     }
 
     public void enableAllButtons(){
         for (int i = 0 ; i < 9 ; i++){
             myButtons[i].setEnabled(true);
         }
+        Log.d("TTT", "enableAllButtons: ");
     }
 
     public void gameOver(){
@@ -208,11 +216,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),R.string.O_won, Toast.LENGTH_LONG).show();
         }
         playAgain.setVisibility(View.VISIBLE);
+        Log.d("TTT", "gameOver: ");
     }
     public void draws(){
         disableAllButtons();
         status.setText(R.string.no_winners);
         Toast.makeText(getApplicationContext(),R.string.no_winners, Toast.LENGTH_LONG).show();
         playAgain.setVisibility(View.VISIBLE);
+        Log.d("TTT", "draws: ");
+
     }
 }
