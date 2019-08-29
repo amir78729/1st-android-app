@@ -1,23 +1,31 @@
 package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.example.test.R.color.*;
 
 public class MainActivity extends AppCompatActivity {
     private int moves;
     private Button playAgain;
     private TextView status;
-
+    private ImageButton changeTheme;
     private char[] gameField = new char[9];
     private Button[] myButtons = new Button[9];
+    private TextView title;
+    private boolean isLight = true;
 
     private boolean playerNumber1Turn = true;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Button button8 = findViewById(R.id.b8);
         Button button9 = findViewById(R.id.b9);
 
+//        changeTheme = findViewById(R.id.change_theme);
+
         myButtons[0] = button1;
         myButtons[1] = button2;
         myButtons[2] = button3;
@@ -47,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         myButtons[7] = button8;
         myButtons[8] = button9;
 
-
+        title = findViewById(R.id.title);
 
         clearTheGameField();
 
@@ -133,6 +143,14 @@ public class MainActivity extends AppCompatActivity {
                 playerNumber1Turn = true;
                 status.setText(R.string.X_turn);
                 playAgain.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        changeTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeTheTheme(isLight);
+                isLight = !isLight;
             }
         });
     }
@@ -225,5 +243,24 @@ public class MainActivity extends AppCompatActivity {
         playAgain.setVisibility(View.VISIBLE);
         Log.d("TTT", "draws: ");
 
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public void changeTheTheme(boolean isLight){
+        if (isLight){
+            status.setTextColor(lightBackground);
+            status.setTextColor(lightBackground);
+            for (Button b : myButtons){
+                b.setTextColor(lightBackground);
+                b.setBackgroundColor(darkBackground);
+            }
+        }else{
+            status.setTextColor(darkBackground);
+            status.setTextColor(darkBackground);
+            for (Button b : myButtons){
+                b.setTextColor(darkBackground);
+                b.setBackgroundColor(lightBackground);
+            }
+        }
     }
 }
